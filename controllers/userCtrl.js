@@ -48,7 +48,6 @@ const loginUserCtrl = asyncHandler(async (req, res) => {
 })
 
 // handle refresh token
-
 const handleRefreshToken = asyncHandler(async (req, res) => {
     const cookie = req.cookies;
     if (!cookie?.refreshToken) throw new Error("No hay token de actualización en Cookies");
@@ -66,26 +65,26 @@ const handleRefreshToken = asyncHandler(async (req, res) => {
 
 // logout functionality
 const logout = asyncHandler(async (req, res) => {
-    const cookie = req.cookies;
-    if (!cookie?.refreshToken) throw new Error("No hay token de actualización en las cookies");
-    const refreshToken = cookie.refreshToken;
-    const user = await User.findOne({ refreshToken });
+    const cookie = req.cookies
+    if (!cookie?.refreshToken) throw new Error('No hay token de actualización en las cookies')
+    const refreshToken = cookie.refreshToken
+    const user = await User.findOne({ refreshToken })
     if (!user) {
         res.clearCookie("refreshToken", {
             httpOnly: true,
-            secure: true,
-        });
-        return res.sendStatus(204); // forbidden
+            secure: true
+        })
+        return res.sendStatus(204) // forbidden
     }
-    await User.findOneAndUpdate(refreshToken, {
-        refreshToken: "",
-    });
+    await User.findOneAndUpdate({ refreshToken }, {
+        refreshToken: ''
+    })
     res.clearCookie("refreshToken", {
         httpOnly: true,
-        secure: true,
-    });
-    res.sendStatus(204); // forbidden
-});
+        secure: true
+    })
+    res.sendStatus(204) // forbidden
+})
 
 //update a user
 const updatedUser = asyncHandler(async (req, res) => {
