@@ -5,7 +5,7 @@ const {
     deleteBrand,
     getBrand,
     getallBrand,
-} = require("../controller/brandCtrl");
+} = require("../controllers/brandCtrl");
 const { authMiddleware, isAdmin } = require("../middlewares/authMiddleware");
 const router = express.Router();
 

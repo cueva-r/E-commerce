@@ -24,7 +24,7 @@ const {
     getOrders,
     updateOrderStatus,
     getAllOrders,
-} = require("../controller/userCtrl");
+} = require("../controllers/userCtrl");
 const { authMiddleware, isAdmin } = require("../middlewares/authMiddleware");
 const router = express.Router();
 router.post("/register", createUser);
