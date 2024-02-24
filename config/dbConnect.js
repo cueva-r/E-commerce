@@ -1,12 +1,11 @@
-const { default: mongoose } = require("mongoose")
+const { default: mongoose } = require("mongoose");
 
-const dbConnect = () =>{
-    try{
-        const conn = mongoose.connect(process.env.MONGODB_URL)
-        console.log("Base de datos conectada exitosamente");
-    }catch(error){
-        console.log("Error en la base de datos");
+const dbConnect = () => {
+    try {
+        const conn = mongoose.connect(process.env.MONGODB_URL);
+        console.log("Database Connected Successfully");
+    } catch (error) {
+        console.log("DAtabase error");
     }
-}
-
+};
 module.exports = dbConnect;
